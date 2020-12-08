@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Test graphix library</title>
+    <style type="text/css">
+        body { background-color:#fff; }
+        #file1 { width: 45%; height:100px; margin-right:10px; float:left; border:1px solid #ccc; }
+        #result  {width: 45%; height: 100px; float:left; border:1px solid #ccc;}
+        #canvas1 { border:1px solid #cfc; }
+        h1 {font-size:20px;}
+    </style>
+    <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+</head>
+<body onload="my_onload()">
+    <h1>Test GRAPHIX library</h1>
+    <canvas id="canvas1" width="800" height="600"></canvas>
+<h3>Population of countries</h3>
+    <canvas id="canvas2" width="1200" height="640"></canvas>
+
+    <img id="wiz" src="13_wizard_small.gif" width="1" />
+    <img id="map" src="russia.png" width="1" />
+
+    <script type="text/javascript" src="graphix.js"></script>
+    <script type="text/javascript">
+//called when a document is loaded
+function my_onload() {
+    GRAPHIX.AX_CL = "#ffff00";
+    GRAPHIX.PADDING = 5;
+    GRAPHIX.borders = 15;
+    GRAPHIX.drawAxes('canvas1');
+ 
+//the blue histogram
+    var data = [
+     [20, 100],
+     [100, 160],
+     [200, 100],
+     [300, 200],
+     [390, 300],
+    ];
+    var opt = { "x0": 0, "x1": 400, "y0": 0, "y1": 400, "clr": "#0000ff", "sty": "hist", "size":"3" };
+    GRAPHIX.drawData('canvas1', data, opt);
+ 
+    //the quadratic curve
+    var opt2 = { "x0": 0, "x1": 1, "y0": 0, "y1": 1.5, "clr": "#ff0000", "sty": "dots", "size":"4" };
+    var data2 = new Array();
+    for (var j = 0; j < 100; j++) {
+        var t = j * 0.01;
+        var t2 = t * t;
+        data2.push(new Array(t, t * (-t2 * t + 4 * t2 - 6 * t + 4)));
+    }
+    GRAPHIX.drawData('canvas1', data2, opt2);
+ 
+    //cubic curve
+    var opt3 = { "x0": 0, "x1": 1, "y0": 0, "y1": 1.5, "clr": "#ff00ff", "sty": "line" };
+    var data3 = new Array();
+    for (var j = 0; j < 100; j++) {
+        var t = j * 0.01;
+        var t2 = t * t;
+        data3.push(new Array(t, t * (4 * t * t - 9 * t + 6)));
+    }
+    GRAPHIX.drawData('canvas1', data3, opt3);
+ 
+    //elastic curve
+    var opt4 = { "x0": 0, "x1": 1, "y0": 0, "y1": 1.5, "clr": "#ffffff", "sty": "line" };
+    var data4 = new Array();
+    for (var j = 0; j < 100; j++) {
+        var t = j * 0.01;
+        var t2 = t * t;
+        data4.push(new Array(t, t * (33 * t2 * t2 - 106 * t2 * t + 126 * t2 - 67 * t + 15)));
+    }
+    GRAPHIX.drawData('canvas1', data4, opt4);
+ 
+    //draw text and image
+    GRAPHIX.drawText('canvas1', "elastic", 40, 40, "#ffffff", 20);
+    GRAPHIX.drawText('canvas1', "random linear", 40, 60, "#00ff00", 20);
+    GRAPHIX.drawImage('canvas1', "wiz", 716, 6);
+
+    //random linear data
+    var opt5 = { "x0": 0, "x1": 1, "y0": 0, "y1": 2, "csk": "#00ff00", "clr": "#ff0000", "sty": "circle", "size":"4" };
+    var data5 = new Array();
+    for (var j = 0; j <= 20; j++) {
+        var t = j * 0.05;
+        var t2 = t + Math.random() * 0.15;
+        if( j >= 10 && j <= 15)
+            data5.push(new Array(t, t2, null, null, j == 15 ? "line_end" : "line"));
+        else {
+            if( j >= 4 && j <= 6)
+                data5.push(new Array(t, t2, null, null, j == 6 ? "line_endf" : "line"));
+            else
+                data5.push(new Array(t, t2));
+        }
+    }
+    GRAPHIX.drawData('canvas1', data5, opt5);
+
+//draw Axes on canvas2
+    GRAPHIX.drawAxes('canvas2');
+//draw the image
+    GRAPHIX.drawImage('canvas2', "map", 0, 0);
+
+//bars on the 'map' image
+    var data3d = [
+     [20, 300, null, null, null, 10, "10 mln."],//fin
+     [50, 180, null, null, null, 10, "9.5 mln."],//bel
+     [105, 125, null, null, null, 44, "44 mln."],//ukr
+     [275, 115, null, null, null, 35, "35 mln."],//kaz
+     [540, 90, null, null, null, 5, "5 mln."],//mong
+     [520, 285, null, null, null, 145, "146 mln."],//rus
+    ];
+    var opt3d = { "x0": 0, "x1": 1200, "y0": 0, "y1": 640, "clr": "#0099cc", "sty": "hist3d", "lnw":"10" };
+    GRAPHIX.drawData('canvas2', data3d, opt3d);
+
+    return false;
+}
+
+    </script>
+</body>
+</html>

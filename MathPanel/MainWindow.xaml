@@ -1,0 +1,26 @@
+﻿<Window x:Class="MathPanel.Dynamo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MathPanel"
+        mc:Ignorable="d"
+        Title="Math Panel" Height="620" Width="1200" Left="5" Top="5" PreviewKeyDown="MyPreviewKeyDown">
+    <Grid Margin="0,0,0,0" Height="600" Width="1200" Background="Beige">
+        <Label x:Name="Label1" Content="Commands" HorizontalAlignment="Left" Margin="4,4,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Label2" Content="Messages" HorizontalAlignment="Left" Margin="4,342,0,0" VerticalAlignment="Top" BorderThickness="1" BorderBrush="Gainsboro"/>
+        <Button x:Name="button1" Content="Execute" HorizontalAlignment="Left" Height="28" Margin="197,4,0,0" VerticalAlignment="Top" Width="68"/>
+        <Button x:Name="button2" Content="Graphics" HorizontalAlignment="Left" Height="28" Margin="297,4,0,0" VerticalAlignment="Top" Width="68"/>
+        <Button x:Name="button3" Content="Open" HorizontalAlignment="Left" Height="28" Margin="397,4,0,0" VerticalAlignment="Top" Width="68"/>
+        <Button x:Name="button4" Content="Save" HorizontalAlignment="Left" Height="28" Margin="497,4,0,0" VerticalAlignment="Top" Width="68"/>
+        <Button x:Name="button5" Content="Compile" HorizontalAlignment="Left" Height="28" Margin="597,4,0,0" VerticalAlignment="Top" Width="95"/>
+        <Button x:Name="button6" Content="New script" HorizontalAlignment="Left" Height="28" Margin="717,4,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button x:Name="button7" Content="Image" HorizontalAlignment="Left" Height="28" Margin="827,4,0,0" VerticalAlignment="Top" Width="90"/>
+        <ScrollViewer Name="sv1" VerticalScrollBarVisibility="Auto" BorderThickness="1" Width="1180" Margin="4,40,4,260" Height="320" Background="AliceBlue">
+            <TextBox x:Name="textBlock1" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True" Text="" VerticalAlignment="Top" Height="280" Width="1150"/>
+        </ScrollViewer>
+        <TextBox x:Name="textBlock2" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True" Text="" VerticalAlignment="Top" Height="200" Width="1150" Margin="8,370,42,0"/>
+        <WebBrowser x:Name="web1" HorizontalAlignment="Left" Height="550" VerticalAlignment="Bottom" Width="1180" Margin="0,0,0,9"/>
+        <Image x:Name="img1" HorizontalAlignment="Left" Height="550" VerticalAlignment="Bottom" Width="1180" Margin="0,0,0,9" />
+    </Grid>
+</Window>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Canvas drawing</title>
+    <style type="text/css">
+        body { background-color:#ffe; border:2px solid #cfc; }
+        .red { background-color:#fcc; }
+        .green { background-color:#cfc; }
+        #scoretable td { width:24px; }
+    </style>
+<!-- add Jquery library to simplify coding -->
+    <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div id="divX">Canvas drawing</div>
+
+<!-- add a new tag  with id="canvas2"  -->
+<canvas id="canvas2" width="1100" height="600"></canvas>
+
+<!-- add graphix library -->
+<script type="text/javascript" src="graphix.js"></script>
+
+<script type="text/javascript">
+//draw our text data in "divX" tag
+function ext_div(w) {
+    $("#divX").html(w);
+    return false;
+}
+
+//new
+//draw a line
+function ext_example1(w) {
+var c = document.getElementById("canvas2");
+var ctx = c.getContext("2d");
+ctx.moveTo(0, 0);
+ctx.lineTo(1100, 600);
+ctx.stroke();
+}
+
+//draw a circle
+function ext_example2(w) {
+var c = document.getElementById("canvas2");
+var ctx = c.getContext("2d");
+ctx.beginPath();
+ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+ctx.stroke();
+}
+
+//draw a text
+function ext_example3(w) {
+var c = document.getElementById("canvas2");
+var ctx = c.getContext("2d");
+ctx.font = "30px Arial";
+ctx.fillText("Hello World", 10, 50);
+}
+
+//draw json-data
+function ext_json(w) {
+    //draw our data
+    var dpa = GRAPHIX.drawJson("canvas2", w);
+    return false;
+}
+//prepare to draw our graph data
+function ext_graph() {
+    $("#divX").hide();
+    $("#canvas2").show();
+    return false;
+}
+
+</script>
+
+</body>
+</html>
+
